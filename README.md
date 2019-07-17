@@ -68,3 +68,10 @@ These issues basically occur when an application does user input sanitisation on
 Implement all critical checks on server side code only
 Client-side checks must be treated as decoratives only
 All business logic must be implemented and checked on the server code. This includes user input, the flow of applications and even the URL/Modules a user is supposed to access or not
+
+# Insecure Direct Object References (IDOR)
+There can be many variables in the application such as “id”, “pid”, “uid”. Although these values are often seen as HTTP parameters, they can be found in headers and cookies. The attacker can access, edit or delete any of other users’ objects by changing the values. This vulnerability is called IDOR.
+The insecure direct object references vulnerability allows an attacker to steal other users’ data of a specific type. Beyond just the data in a database, an attacker can exploit it to access restricted files or directories on the server. According to the Open Web Application Security Project (OWASP), an insecure direct object references vulnerability is commonplace and easy to exploit.
+
+First, it needs to understand the application flow developed by the software developers. All the modules functions and their sub-modules functions need to be understood when the logged-in user into the web/mobile application. It is also important to remember that this vulnerability is as severe as XSS, CSRF in security testing and as a type of vulnerability that is not easily discovered (automatized testing or manual testing).
+IDOR can be prevented in many ways like making sensitive information accessible to authorised users, implementing proper authentication and authorisation checks at every function to make sure the user requesting access to a resource whether to view or edit, is his/her data and no one else's.
